@@ -1,6 +1,6 @@
 {
     "name": "filippo-toso/eloquent-aggregates",
-    "description": "A simple trait to add support for aggregates function in Eloquent models",
+    "description": "A simple trait to add support for aggregate functions in Eloquent models",
     "license": "MIT",
     "authors": [
         {

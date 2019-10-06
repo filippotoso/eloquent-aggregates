@@ -1,6 +1,6 @@
 # Eloquent Aggregates
 
-A simple trait to add support for aggregates function in Eloquent models
+A simple trait to add support for aggregate functions in Eloquent models.
 
 ## Requirements
 
