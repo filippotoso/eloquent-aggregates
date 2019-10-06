@@ -1,4 +1,4 @@
-# Eloquent Aggregators
+# Eloquent Aggregates
 
 A simple trait to add support for aggregates function in Eloquent models
 
@@ -22,27 +22,27 @@ Then you can use the following methods:
 
 ```
 // Get the sum of all the amount fields in the transactions relationship
-$users = App\Users::withSum('transactions', 'amount')->get();
+$users = App\Users::withSum('amount', 'transactions')->get();
 
 // Get the max of all the amount fields in the transactions relationship
-$users = App\Users::withMax('transactions', 'amount')->get();
+$users = App\Users::withMax('amount', 'transactions')->get();
 
 // Get the min of all the amount fields in the transactions relationship
-$users = App\Users::withMin('transactions', 'amount')->get();
+$users = App\Users::withMin('amount', 'transactions')->get();
 
 // Get the average of all the amount fields in the transactions relationship
-$users = App\Users::withAvg('transactions', 'amount')->get();
+$users = App\Users::withAvg('amount', 'transactions')->get();
 ```
 
 You can also add constraints to the relationship query:
 
 ```
-$users = App\Users::withAvg(['transactions' => function ($query) {
+$users = App\Users::withAvg('amount', ['transactions' => function ($query) {
     // Include only the transaction created in the last seven days
     $query->whereDate('created_at', '>=', Carbon\Carbon::today()->subDays(7));
-}], 'amount')->get();
+}])->get();
 ```
 
 ## Already extending the Eloquent Builder?
 
-If you are alreayd extending the `Illuminate\Database\Eloquent\Builder`, just add the trait `FilippoToso\Eloquent\Aggregates\Concerns\QueriesAggregates` to your Builder class. 
+If you are already extending the `Illuminate\Database\Eloquent\Builder`, just add the trait `FilippoToso\Eloquent\Aggregates\Concerns\QueriesAggregates` to your Builder class. 

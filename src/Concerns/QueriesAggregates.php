@@ -12,61 +12,61 @@ trait QueriesAggregates
     /**
      * Add subselect queries to max the relations.
      *
-     * @param  mixed  $relations
      * @param  string $expression
+     * @param  mixed  $relations
      * @return $this
      */
-    public function withMax($relations, $expression)
+    public function withMax($expression, $relations)
     {
-        return $this->withAggregate('max', $relations, $expression);
+        return $this->withAggregate('max', $expression, $relations);
     }
 
     /**
      * Add subselect queries to min the relations.
      *
-     * @param  mixed  $relations
      * @param  string $expression
+     * @param  mixed  $relations
      * @return $this
      */
-    public function withMin($relations, $expression)
+    public function withMin($expression, $relations)
     {
-        return $this->withAggregate('min', $relations, $expression);
+        return $this->withAggregate('min', $expression, $relations);
     }
 
 
     /**
      * Add subselect queries to avg the relations.
      *
-     * @param  mixed  $relations
      * @param  string $expression
+     * @param  mixed  $relations
      * @return $this
      */
-    public function withAvg($relations, $expression)
+    public function withAvg($expression, $relations)
     {
-        return $this->withAggregate('avg', $relations, $expression);
+        return $this->withAggregate('avg', $expression, $relations);
     }
 
     /**
      * Add subselect queries to sum the relations.
      *
-     * @param  mixed  $relations
      * @param  string $expression
+     * @param  mixed  $relations
      * @return $this
      */
-    public function withSum($relations, $expression)
+    public function withSum($expression, $relations)
     {
-        return $this->withAggregate('sum', $relations, $expression);
+        return $this->withAggregate('sum', $expression, $relations);
     }
 
     /**
      * Add subselect queries to aggregate the relations.
      *
      * @param  string $aggregateType 
-     * @param  mixed  $relations
      * @param  string $expression
+     * @param  mixed  $relations
      * @return $this
      */
-    protected function withAggregate($aggregateType, $relations, $expression)
+    protected function withAggregate($aggregateType, $expression, $relations)
     {
         if (empty($aggregateType) || empty($relations) || empty($expression)) {
             return $this;
@@ -108,7 +108,7 @@ trait QueriesAggregates
             // Finally we will add the proper result column alias to the query and run the subselect
             // statement against the query builder. Then we will return the builder instance back
             // to the developer for further constraint chaining that needs to take place on it.
-            $column = $alias ?? Str::snake($name . '_count');
+            $column = $alias ?? Str::snake($name . '_' . $aggregateType);
             $this->selectSub($query, $column);
         }
         return $this;
