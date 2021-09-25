@@ -2,14 +2,12 @@
     "name": "filippo-toso/eloquent-aggregates",
     "description": "A simple trait to add support for aggregate functions in Eloquent models",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Filippo Toso",
-            "email": "filippo.toso@creativepark.it"
-        }
-    ],
+    "authors": [{
+        "name": "Filippo Toso",
+        "email": "filippo.toso@creativepark.it"
+    }],
     "require": {
-        "php": "^7.2",
+        "php": "^7.0 || ^8.0 || ^9.0",
         "illuminate/support": ">=5.7",
         "laravel/helpers": "^1.1"
     },
